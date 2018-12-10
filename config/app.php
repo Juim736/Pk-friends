@@ -149,6 +149,7 @@ return [
         Cartalyst\Sentinel\Laravel\SentinelServiceProvider::class,
         // Yajra\Datatables\DatatablesServiceProvider::class,
         Yajra\Datatables\DatatablesServiceProvider::class,
+        Collective\Html\HtmlServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -163,6 +164,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\PkProvider::class,
+
 
     ],
 
@@ -217,6 +219,8 @@ return [
         'Activation' => Cartalyst\Sentinel\Laravel\Facades\Activation::class,
         'Reminder'   => Cartalyst\Sentinel\Laravel\Facades\Reminder::class,
         'Sentinel'   => Cartalyst\Sentinel\Laravel\Facades\Sentinel::class,
+        'Form' => Collective\Html\FormFacade::class,
+        'Html' => Collective\Html\HtmlFacade::class,
 
     ],
 

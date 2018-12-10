@@ -16,11 +16,14 @@ Route::get('/pk', function () {
 });
 
 Route::group(['middleware' => 'visitors'], function(){
+    Route::get('/', function () {
+        return view('pk.login.login');
+    });
 	Route::get('/pk-login', function () {
     return view('pk.login.login');
 	});
 	Route::get('/sign-up-form',function(){
-		return view('pk.login.sign-up');
+		return view('registration');
 	});
 
 	Route::post('/sign-up-post','PkAuthController@signup');

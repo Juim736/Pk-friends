@@ -51,7 +51,7 @@
 											</div>
 										</a>
 									</li>
-									<li class="col-md-4 col-sm-6">
+									<li>
 										<a href="{{url('/blood')}}">
 											<!-- <i class="fa fa-database" aria-hidden="true" style="color: red"></i> -->
 											<i><img src="{{asset('/pk/')}}/images/bloodbank.jpg" class="img-circle" alt="Image" style="height: 140px;width: 140px;"></i>
