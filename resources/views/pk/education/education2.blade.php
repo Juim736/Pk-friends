@@ -1,3 +1,5 @@
+@include('pk.includes.backup_header')
+
 @section('header_link')
 	<!-- For-Navigation-CSS -->
 
@@ -19,7 +21,7 @@
 
 @endsection
 
-@include('pk.includes.header')
+
 
 		
 <!-- banner -->
