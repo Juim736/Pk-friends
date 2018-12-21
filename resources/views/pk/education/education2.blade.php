@@ -1,4 +1,3 @@
-@include('pk.includes.backup_header')
 
 @section('header_link')
 	<!-- For-Navigation-CSS -->
@@ -20,6 +19,7 @@
 <link href="//fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&amp;subset=devanagari,latin-ext" rel="stylesheet">
 
 @endsection
+@include('pk.includes.backup_header')
 
 
 
