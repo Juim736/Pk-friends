@@ -1,8 +1,6 @@
-@include('pk.includes.header')
+@include('pk.includes.backup_header')
 
-<?php 
- use App\Libraries\Encryption;
- ?>
+
 <br>
 <br>
 <br/> 

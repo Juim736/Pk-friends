@@ -54,8 +54,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <div class="w3_agileits_top_nav col-md-12 col-sm-12 col-xs-12" style="height: 60px;">
         <ul id="gn-menu" class="gn-menu-main">
             <!-- /nav_agile_w3l -->
-
-
             @if(Sentinel::getUser()->user_type == '11' || Sentinel::getUser()->user_type == '1')
                 <li class="gn-trigger">
                     <a class="gn-icon gn-icon-menu"><i class="fa fa-bars" aria-hidden="true"></i><span>Menu</span></a>
@@ -149,13 +147,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <a class="gn-icon gn-icon-menu"><i class="fa fa-bars" aria-hidden="true"></i><span>Menu</span></a>
                 </li>
             @endif
+
+
         <!-- //nav_agile_w3l -->
             <li class="second logo">
-                {{--<h1><a href="{{url('/pk-friends')}}">--}}
-                        {{--<i class="fa fa-graduation-cap" aria-hidden="true">--}}
-                        {{--</i>PK FR--}}
-                    {{--</a>--}}
-                {{--</h1>--}}
+                <h1><a href="{{url('/pk-friends')}}">
+                        <i class="fa fa-graduation-cap" aria-hidden="true">
+                        </i>PK FR
+                    </a>
+                </h1>
             </li>
             <li class="second admin-pic">
                 <ul class="top_dp_agile">
@@ -183,6 +183,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     </form>
 
                 </ul>
+            </li>
+            <li class=" ">
+                {{--<section class="full-top">--}}
+                    {{--<button id="toggle"><i class="fa fa-arrows-alt" aria-hidden="true"></i></button>--}}
+                {{--</section>--}}
             </li>
             {{--<li class="second top_bell_nav">--}}
             {{--<ul class="top_dp_agile ">--}}
