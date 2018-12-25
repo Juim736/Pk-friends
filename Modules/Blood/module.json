@@ -1,0 +1,14 @@
+{
+    "name": "Blood",
+    "alias": "blood",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 0,
+    "providers": [
+        "Modules\\Blood\\Providers\\BloodServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

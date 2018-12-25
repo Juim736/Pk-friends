@@ -18,7 +18,7 @@
                     </div>
                     <div class="col-md-8 agile_w3l_social_media_text">
                         <h4>Shovon</h4>
-                        <p>Graphics Designer & Textile Engineer</p>
+                        <p>Graphics Designer, Textile Engineer</p>
                     </div>
 
                     <div class="clearfix"></div>
@@ -108,7 +108,7 @@
 <!--copy rights start here-->
 <div class="copyrights">
     <p>© 2019 Pk-friends Team | Develop by <a href="{{url('/pk-friends')}}" target="_blank">Pk-friends</a>| Please join
-        with us <a href="">Sign Up</a></p>
+        with us <a href="{{ url('support/support') }}">Support Pakundiya</a></p>
 </div>
 <!--copy rights end here-->
 <!-- js -->

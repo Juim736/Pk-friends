@@ -1,0 +1,14 @@
+{
+    "name": "Pkteam",
+    "alias": "pkteam",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 0,
+    "providers": [
+        "Modules\\Pkteam\\Providers\\PkteamServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

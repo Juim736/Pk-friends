@@ -11,60 +11,29 @@
 |
 */
 
-Route::get('/pk', function () {
-    return view('welcome');
+
+Route::group(['middleware' => 'visitors','XSSProtection'], function(){
+    Route::get('/','PkAuthController@index');
+    Route::get('/pk-login','PkAuthController@index');
+    Route::get('/sign-up-form','PkAuthController@registration');
+	Route::post('/sign-up-post','PkAuthController@signUp');
+	Route::post('/login-pk','PkAuthController@signIn');
 });
 
-Route::group(['middleware' => 'visitors'], function(){
-    Route::get('/', function () {
-        return view('pk.login.login');
-    });
-	Route::get('/pk-login', function () {
-    return view('pk.login.login');
-	});
-	Route::get('/sign-up-form',function(){
-		return view('registration');
-	});
-
-	Route::post('/sign-up-post','PkAuthController@signup');
-	Route::post('/login-pk','PkAuthController@signin');
-
-});
-
-Route::group(['middleware' => 'auth'],function(){
-
-	Route::post('signout','PkAuthController@signout')->name('signout');
+Route::group(['middleware' => 'authenticate','XSSProtection'],function(){
+	Route::post('sign-out','PkAuthController@signOut')->name('signOut');
 	Route::get('/pk-friends','PkController@pk');
-	Route::get('/pk-jim',function(){
-		return "jim";
-	})->name('jim');
-	Route::post('/pk-jim-tyy',function(){
-		return "jim";
-	})->name('pk-jim');
 
-	Route::get('/blood','PkController@pkBlood');
-	Route::group(['middleware' => 'administrator'],function(){
-			
-	});
+
 	Route::group(['middleware' => 'pkadmin'],function(){
 		Route::get('/users_of_pk','PkController@pkUsers');
 	});
-	
-	Route::get('/education','PkController@pkEducation');
-	Route::get('/home', 'HomeController@index')->name('home');
-	Route::get('/groupBlood/{group}', 'PkController@groupBlood');
-	Route::get('/medical-care', 'PkController@medicalCare');
+
 	Route::get('/table','DatatablesController@getIndex');
 	Route::get('/pk-table','DatatablesController@anyData')->name('datatables.data');
-	// Route::get('/pk-table','DatatablesController@anyData');
-	Route::get('/emergency-pk','PkController@emergency');
-	Route::get('/supoort-pk','PkController@support');
-	Route::get('/create-event','PkController@createEvent');
-	Route::get('/pkTeam','PkController@pkTeam');
-	Route::get('/user-profile','PkController@userProfile');
 	Route::get('/getData','PkController@getAllUser');
 
-});
 
+});
 
 Auth::routes();

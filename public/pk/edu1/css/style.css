@@ -44,7 +44,7 @@ img{
 }
 .logo {
     float: left;
-    margin-left: 120px;
+    /*margin-left: 120px;*/
 }
 .logo li {
     display: inline-block;
@@ -1481,7 +1481,7 @@ iframe {
 @media screen and (max-width: 480px){
 	.logo {
 		padding-left: 0;
-		width: 100%;
+		/*width: 100%;*/
 		text-align: center;
 	}
 	.number {

@@ -35,15 +35,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <h1><a href="{{url('/pk-login')}}"><i class="fa fa-graduation-cap" aria-hidden="true"></i>PK Friends
                     </a></h1></li>
 
-            {{--<li class="second w3l_search admin_login">--}}
-
-                {{--<form action="#" method="post">--}}
-                    {{--<input type="search" name="search" placeholder="Search here..." required="">--}}
-                    {{--<button class="btn btn-default" type="submit"><i class="fa fa-search" aria-hidden="true"></i>--}}
-                    {{--</button>--}}
-                {{--</form>--}}
-
-            {{--</li>--}}
             <li class="second full-screen">
                 <section class="full-top">
                     <button id="toggle"><i class="fa fa-arrows-alt" aria-hidden="true"></i></button>
@@ -61,7 +52,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <div class="col-md-12" style="background: #ffffff">
         <div class="col-md-8" style="background: #FAE0E0">
             <div class="" style="margin-top: 80px; height: 560px;">
-                <img src="{{asset('/pk/')}}/images/pk-map.jpg"  alt="Image" height="87%" width="100%">
+                <img src="{{asset('/pk/')}}/images/pk-map.jpg" alt="Image" height="87%" width="100%">
             </div>
         </div>
         <div class="col-md-4" style="background: #F9EAEA">
@@ -114,7 +105,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </ul>
                     </div>
 
-                    <h6><a href="{{ url('test/testpk') }}">Back To Home</a></h6>
+                    <h6><a href="#">Back To Home</a></h6>
 
                 </div>
 
