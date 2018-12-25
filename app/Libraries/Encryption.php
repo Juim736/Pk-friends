@@ -1,7 +1,14 @@
 <?php
+
+/**
+ * Created by Jim
+ * Date: 6/11/2018
+ * Time: 9:51 PM
+ */
+
 namespace App\Libraries;
 
-use Illuminate\Support\Facades\Auth;
+use Cartalyst\Sentinel\Laravel\Facades\Sentinel;
 
 class Encryption{
     
@@ -25,8 +32,8 @@ class Encryption{
 
     public static function encodeId($id, $module=null){
         if(!$module) $module=time();
-        if(Auth::user()) {
-            return Encryption::encode($module . '_' . $id . '_' . Auth::user()->id);
+        if(Sentinel::check()) {
+            return Encryption::encode($module . '_' . $id . '_' . Sentinel::getUser()->id);
         }else{
             return Encryption::encode($module . '_' . $id);
         }
@@ -34,8 +41,8 @@ class Encryption{
 
     public static function decodeId($id, $module=null){
         $ids=explode('_',Encryption::decode($id));
-        if(count($ids)==3 && Auth::user()){
-            if(Auth::user()->id == $ids[2]) {
+        if(count($ids)==3 && Sentinel::check()){
+            if(Sentinel::getUser()->id == $ids[2]) {
                 if ($module) {
                     if (strcmp($module, $ids[0]) == 0) {
                         return $ids[1];
