@@ -59,7 +59,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="registration admin_agile">
                 <br>
                 <div class="signin-form">
-                    <h2>Sign In</h2> @if(Session::has('suc_msg'))
+                    <h2>Sign In</h2>
+                    @if(Session::has('suc_msg'))
                         <div class="alert alert-success">
                             {!! Session::get('suc_msg') !!}
                         </div>

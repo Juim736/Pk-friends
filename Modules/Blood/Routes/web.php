@@ -14,6 +14,7 @@
 Route::group(['prefix' => 'blood', 'middleware' => ['authenticate','XSSProtection']], function() {
     Route::get('/blood', 'BloodController@index');
     Route::get('/groupBlood/{group}', 'BloodController@groupBlood');
+    Route::post('/update-blood-info', 'BloodController@updateBlood');
 });
 
 

@@ -3,7 +3,7 @@
 <style>
     /* USER PROFILE PAGE */
     .card {
-        margin-top: 20px;
+        margin-top: 50px;
         padding: 30px;
         background-color: rgba(214, 224, 226, 0.2);
         -webkit-border-top-left-radius: 5px;
@@ -108,7 +108,7 @@
                     <img src="{{asset('/pk/')}}/images/pk-bg.jpg" class="img-cercle" alt="Image">
                 </div>
                 <div class="useravatar">
-                    <img src="{{Sentinel::getUser()->image}}" class="img-cercle" alt="Image">
+                    <img src="{{ asset(Sentinel::getUser()->image) }}" class="img-cercle" alt="Image">
 
                 </div>
                 <div class="card-info"><span class="card-title">{{ucfirst(Sentinel::getUser()->first_name) }}

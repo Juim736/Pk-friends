@@ -2,6 +2,9 @@
 
 namespace Modules\Blood\Providers;
 
+use App\User;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
 
@@ -26,6 +29,14 @@ class BloodServiceProvider extends ServiceProvider
         $this->registerViews();
         $this->registerFactories();
         $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
+
+        View::composer('blood::index', function ($view) {
+            $availableDate =  Carbon::today()->subDays(90);
+            $allAvailableDonor = User::where('last_given_blood','<=', $availableDate)
+                ->get(['first_name', 'last_name','union','current_zone','blood','mobile']);
+            $view->with('allAvailableDonor', $allAvailableDonor);
+        });
+
     }
 
     /**

@@ -1,7 +1,23 @@
 @extends('layouts.master')
+@section('header_link')
+    <link rel="stylesheet" href="{{ asset('/assets/DataTable/dataTable.bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ asset('/assets/DataTable/dataTable.responsive.bootstrap.css') }}">
+@endsection
 @section('content')
     <div class="container">
         <div class="row">
+
+            @if(Session::has('suc_msg'))
+                <div class="alert alert-success">
+                    {!! Session::get('suc_msg') !!}
+                </div>
+            @endif
+            @if(Session::has('err_msg'))
+                <div class="alert alert-danger">
+                    {!! Session::get('err_msg') !!}
+                </div>
+            @endif
+
             <div class="col-md-8">
                 <br>
                 <!--   <h2>Carousel Example</h2> -->
@@ -155,8 +171,9 @@
     <!-- Modal -->
     <div class="modal fade" id="myModal" role="dialog">
         <div class="modal-dialog">
-
             <!-- Modal content-->
+            {{ Form::open(['url' => '/blood/update-blood-info', 'method' => 'post', 'id' => 'blood_info', 'class' => ''])}}
+            {{ csrf_field() }}
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -164,54 +181,75 @@
                             হাসবে রুগী বাঁচবে প্রাণ </b></h4>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ url('/blood/update')  }}" method="post">
-                        {{csrf_field()}}
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group col-md-10 col-md-offset-1">
-                                    <label for="" class="col-md-6 col-sm-12" style="color: #610D02">Blood Group (রক্তের
-                                        গ্রুপ) :</label>
-                                    <div class="col-md-6 col-sm-12">
-                                        <select class="">
-                                            <option value="">Select Blood Group</option>
-                                            <option value="">A+</option>
-                                            <option value="">A-</option>
-                                            <option value="">B+</option>
-                                            <option value="">B-</option>
-                                            <option value="">O+</option>
-                                            <option value="">O-</option>
-                                            <option value="">AB+</option>
-                                            <option value="">AB-</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group col-md-10 col-md-offset-1">
-                                    <label for="" class="col-md-6 col-sm-12" style="color: #610D02">Last Blood Given
-                                        Date
-                                        :</label>
-                                    <div class="col-md-6 col-sm-12 pull-right" style="">
-                                        <input type="date" name="" class="">
-                                    </div>
-                                    <br>
-                                    <br/>
+                    {{csrf_field()}}
+                    <div class="row">
+                        <div class="col-md-12">
 
-                                    <label for="" class="col-md-6 col-sm-12" style="color: #610D02">Present Zone or Area
-                                        :</label>
-                                    <div class="col-md-6 col-sm-12 pull-right" style="">
-                                        <input type="text" name="" class="">
-                                    </div>
+                            <div class="form-group col-md-10 col-md-offset-1">
+                                @if ($errors->has('blood_group'))
+                                    <span class="invalid-feedback" style="color: red;display:block">
+                                        <strong>{{ $errors->first('blood_group') }}</strong>
+                                    </span>
+                                @endif
+                                <label for="" class="col-md-6 col-sm-6" style="color: #610D02">Blood Group (রক্তের
+                                    গ্রুপ) :</label>
+                                <div class="col-md-6 col-sm-6">
+                                    <select class="" name="blood_group">
+                                        <option value="">Select Blood Group</option>
+                                        <option value="A+">A+ Positive</option>
+                                        <option value="A-">A- Negetive</option>
+                                        <option value="B+">B+ Positive</option>
+                                        <option value="B-">B- Negetive</option>
+                                        <option value="O+">O+ Positive</option>
+                                        <option value="O-">O- Negetive</option>
+                                        <option value="AB+">AB+ Positive</option>
+                                        <option value="AB-">AB- Negetive</option>
+                                    </select>
+                                    <span id="blood_group" style="color: red"></span>
                                 </div>
                             </div>
-                            <br>
+
+
+                            <div class="form-group col-md-10 col-md-offset-1">
+                                @if ($errors->has('last_given_date'))
+                                    <span class="invalid-feedback" style="color: red;display:block">
+                                        <strong>{{ $errors->first('last_given_date') }}</strong>
+                                    </span>
+                                @endif
+                                <div class="form-group">
+                                    <label for="name" class="col-md-6 col-sm-6" style="color: #610D02"><i
+                                                class="zmdi zmdi-account material-icons-name"></i>Last
+                                        Given Blood :</label>
+                                    {{ Form::date('last_given_date','',['id' => 'last_given_date','class' =>'col-md-6 col-sm-6', 'placeholder' => '', 'required']) }}
+                                </div>
+                            </div>
+
+                            <div class="form-group col-md-10 col-md-offset-1">
+
+                                @if ($errors->has('current_zone'))
+                                    <span class="invalid-feedback" style="color: red;display:block">
+                                        <strong>{{ $errors->first('current_zone') }}</strong>
+                                    </span>
+                                @endif
+                                <div class="form-group">
+                                    <label for="name" class="col-md-6 col-sm-6" style="color: #610D02"><i
+                                                class="zmdi zmdi-account material-icons-name"></i>Present
+                                        Zone or Area
+                                        :</label>
+                                    {{ Form::text('current_zone','',['id' => 'current_zone','class' =>'col-md-6 col-sm-6', 'placeholder' => '', 'required']) }}
+                                </div>
+                            </div>
+
                         </div>
-                    </form>
+                        <br>
+                    </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-success" data-dismiss="modal">Submit</button>
+                    <button type="submit" class="btn btn-success">Submit</button>
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                 </div>
             </div>
-
+            {{ Form::close() }}
         </div>
     </div>
     <br>
@@ -219,33 +257,91 @@
     <div class="container">
         <div class="row">
             <div class="w3l-table-info agile_info_shadow">
-                <h3 class="w3_inner_tittle two">Availabe Donar List</h3>
+                <h3 class="w3_inner_tittle two">Available Donor List</h3>
 
-                <table id="table-no-resize">
+                <table id="donor_table" class="table table-striped table-bordered dt-responsive nowrap">
                     <thead>
                     <tr>
                         <th>Name</th>
-                        <th>Age</th>
-                        <th>Gender</th>
-                        <th>Height</th>
-                        <th>Province</th>
-                        <th>Sport</th>
+                        <th>Blood Group</th>
+                        <th>Current Zone</th>
+                        <th>Mobile</th>
+                        <th>Union</th>
                     </tr>
                     </thead>
                     <tbody>
+                    @if(count($allAvailableDonor) > 0)
+                    @foreach($allAvailableDonor as $donor)
+                        <tr>
+                            <td>{{ ucfirst($donor->first_name.' - '.$donor->last_name )  }}</td>
+                            <td>{{ $donor->blood }}</td>
+                            @if($donor->current_zone)
+                                <td>{{ $donor->current_zone }}</td>
+                            @else
+                                <td>{{ $donor->union }}</td>
+                            @endif
+                            <td>{{ $donor->mobile }}</td>
+                            <td>{{ $donor->union }}</td>
+                        </tr>
+                    @endforeach
+                        @else
                     <tr>
-                        <td>John Stone</td>
-                        <td>30</td>
-                        <td>Male</td>
-                        <td>5'9</td>
-                        <td>Ontario</td>
-                        <td>Badminton</td>
+                        No Result Found ..
                     </tr>
+                        @endif
                     </tbody>
                 </table>
+
+
             </div>
         </div>
     </div>
+
+
+@endsection
+
+@section('footer_script')
+
+    <script src="{{ asset('/assets/DataTable/jquery.dataTable.js') }}"></script>
+    <script src="{{ asset('/assets/DataTable/dataTable.bootstrap.js') }}"></script>
+    <script src="{{ asset('/assets/DataTable/dataTable.responsive.js') }}"></script>
+    <script src="{{ asset('/assets/DataTable/dataTable.responsive.bootstrap.js') }}"></script>
+
+    <!-- Bootstrap JavaScript -->
+    <script>
+        $(document).ready(function(){
+            $('#blood_info').validate({
+                rules: {
+                    // blood_group: {
+                    //     required: true,
+                    // },
+                    last_given_date: {
+                        required: true,
+                    },
+                    current_zone : {
+                        required: true,
+                    }
+                },
+                messages: {
+                    current_zone: {
+                        required : "Current zone is required",
+                    },
+                    last_given_date: {
+                        required : "Last Gvien blood date is required",
+                    },
+                    blood_group : {
+                        required :  "Blood Group is required, Please enter your proper blood Group",
+                    },
+                }
+            });
+        });
+
+        $(function () {
+            $('#donor_table').DataTable({
+            });
+        });
+
+    </script>
 @endsection
 
 
