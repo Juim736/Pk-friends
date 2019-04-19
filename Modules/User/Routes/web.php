@@ -11,7 +11,8 @@
 |
 */
 
-Route::prefix('user')->group(function() {
+Route::group(['prefix' => 'user','middleware' => ['authenticate','XSSProtection']],function() {
     Route::get('/', 'UserController@userProfile');
     Route::get('/user-profile', 'UserController@userProfile');
+    Route::post('/profile-update', 'UserController@updateProfile');
 });

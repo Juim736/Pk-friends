@@ -156,8 +156,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <ul class="dropdown-menu drp-mnu">
                             <li><a href="#"><i class="fa fa-cog"></i> Settings</a></li>
                             <li><a href="{{url('user/user-profile')}}"><i class="fa fa-user"></i> Profile</a></li>
+                            <li><a href="{{url('selfmanage/self-manage')}}"><i class="fa fa-key"></i> Self Manage</a></li>
                             <li>
-                                <a href="javascript::void(0)"
+                                <a href="javascript:void(0)"
                                    onclick="document.getElementById('signOut_form').submit()"><i
                                             class="fa fa-sign-out"></i> Sign Out</a>
                             </li>
